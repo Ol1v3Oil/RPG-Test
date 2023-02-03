@@ -4,13 +4,14 @@ class insect():
   def __init__(self, name, hp, att, ally = False, cards = [], mrl = 0, speed = 1):
     self.stats = {
       "name": name, 
-      "hp" : hp, 
+      "hp" : [hp, hp], 
       "att" : att, 
       "effects": {}, 
       "spd" : 1,
       "mrl" : [mrl , mrl],
       "ally" : ally, 
-      "id" : 0}
+      "id" : 0,
+      "able": True}
     self.cards = cards
     self.body = {"body" : [], 
                  "head" : [], 
@@ -23,7 +24,7 @@ class insect():
     temp = []
     for i in range(len(self.cards)):
       temp.append(self.cards[i].name)
-    print(f"{self.stats}, cards:{temp}")
+    print(f"{self.stats}, \n cards:{temp}")
 
 
 class parts():

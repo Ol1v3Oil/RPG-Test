@@ -14,7 +14,7 @@ class system():
 
   def act(self, card, **d):
     e = card.activate(**d)
-    return e
+    return e #deal damage or effect
   
   def find(self, value, key = 'name'):
     for i in self.entities:
@@ -31,10 +31,8 @@ class system():
         elif (((list[i] + 1) == list[i + 1])) == False: 
           return i + 1
 
-  def dealdmg(self, name, dmg):
-    entity = self.find(name)
-    entity.stats['hp'] -= dmg
-    print(entity.stats['hp'])
+  def after():
+    pass
 
 class card_list():
   def __init__(self, team):
@@ -81,7 +79,7 @@ class card_list():
 Card1 = Cards.card(name = "slash", id = [1])
 Card2 = Cards.card(name = "tend", id = [2])
 Card3 = Cards.card(name = "succ", id = [3])
-Card4 = Cards.card(name = "Bash", id = [4])
+Card4 = Cards.card(name = "bash", id = [4])
   
 battle = system()
 ant = Insect.insect("Ant", 10, 4, ally = True, cards = [Card1, Card2, Card3, Card4], mrl = 20)
@@ -89,12 +87,11 @@ beetle = Insect.insect("Beetle", 15, 2, ally = False, cards = [Card1, Card2, Car
 
 battle.adde(ant)
 battle.adde(beetle)
-for i in battle.entities: 
-  i.display()
+for i in battle.entities: i.display()
  
 #print(battle.find(1, key ='id').stats['name'])
 battle.p.addl(ant)
 battle.e.addl(beetle)
-print(battle.act(Card1, user = ant, target = beetle))
 for i in battle.c_list: i.adda(4)
 for i in battle.c_list: print(i.showable())
+print(battle.act(Card1, user = ant, target = beetle))
